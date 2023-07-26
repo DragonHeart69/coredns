@@ -33,7 +33,18 @@ jobs:
             go generate
             make
 
-            sed -i 's/FROM scratch/FROM debian:stable-slim/g' Dockerfile
+            cat > Dockerfile <<EOF
+            FROM debian:stable-slim
+
+            RUN apt-get update && apt-get -uy upgrade
+            RUN apt-get -y install libunbound-dev ca-certificates && update-ca-certificates
+
+            ADD coredns /coredns
+
+            EXPOSE 53 53/udp
+            ENTRYPOINT ["/coredns"]
+            EOF
+
             docker buildx build . -t quay.io/giantswarm/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1-unbound
             ls -la
 
