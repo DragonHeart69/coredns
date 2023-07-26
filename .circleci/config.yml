@@ -15,8 +15,8 @@ jobs:
       - run:
           name: Install dependencies for unbound
           command: |
-            apt-get update 
-            apt-get install -y libunbound-dev golang make docker
+            sudo apt-get update 
+            sudo apt-get install -y libunbound-dev make
 
       - run:
           name: Clone upstream repository
