@@ -32,6 +32,8 @@ jobs:
             go get github.com/coredns/unbound
             go generate
             make
+
+            sed -i 's/FROM scratch/FROM debian:stable-slim/g' Dockerfile
             docker buildx build . -t quay.io/giantswarm/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1-unbound
             ls -la
 
