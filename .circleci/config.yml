@@ -33,7 +33,7 @@ jobs:
             go generate
             make
 
-            cat > Dockerfile <<EOF
+            cat > Dockerfile \<<EOF
             FROM debian:stable-slim
 
             RUN apt-get update && apt-get -uy upgrade
