@@ -32,7 +32,7 @@ jobs:
             go get github.com/coredns/unbound
             go generate
             make
-            docker build . -t quay.io/giantswarm/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1-unbound
+            docker buildx build . -t quay.io/giantswarm/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1-unbound
             ls -la
 
       - run:
