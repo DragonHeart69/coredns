@@ -33,6 +33,7 @@ jobs:
             go generate
             make
             docker build . -t quay.io/giantswarm/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1-unbound
+            ls -la
 
       - run:
           name: Docker login
