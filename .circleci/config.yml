@@ -27,7 +27,7 @@ jobs:
           name: Build Docker image
           command: |
             cd coredns
-            echo "unbound:github.com/coredns/unbound" >> plugin.cfg
+            echo "unbound:github.com/giantswarm/coredns-unbound" >> plugin.cfg
             sed -i 's/CGO_ENABLED?=0/CGO_ENABLED?=1/g' Makefile
             go get github.com/coredns/unbound
             go generate
